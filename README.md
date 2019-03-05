@@ -1,2 +1,2 @@
-# VoterInfluence
-This project helps shed some light on the true voting influence states have in Presidential elections.
+# Familiar Faces
+This project uses facifier to leverage machine learning to classify the emotions of image subjects. The pupose is to identify a trend in the emotional health of an individual based on a dataset of images.

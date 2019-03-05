@@ -2,7 +2,7 @@
 .DS_Store
 
 #config file exclusion
-config.py
+# config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -56,75 +56,11 @@
                     </div><!-- /.container-fluid -->
                   </nav>
             </div> <!--End Navbar row-->
+<!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
+<h1>SURVEY ROUTE</h1>
 
-        <header class="v-header container">
-                <div class="fullscreen-video-wrap">
-                    <video src="{{url_for('static', filename='assets//mov/code.mov')}}" autoplay="true" loop= "true"></video>
-                </div>
 
-                    <div class="header-overlay"></div>
-                    <div class="header-content">
-                    <h1>Electoral College Class Survey</h1>
-                    <h2>"Are all Citizens created equal?"</h2>
-                    <h3>Does the current system actually work?</h3>
-                    <form class= "form-horizontal" id="vote_form">
-                
-                        <div class="form-group">
-                                        
-                            <div class="voter_question">
-                                <label class="voter_question">
-                                <input name="vote"  type="radio" value="yes" /> Yes
-                                </label>
-                            </div>
-            
-                            <div class="voter_question">
-                                <label class="voter_question">
-                                    <input name="vote"  type="radio" value="no" /> No
-                                    </label>
-                                </div>
-            
-                            <div class="voter_question">
-                                <label class="voter_question">
-                                    <input name="vote"  type="radio" value="idk" /> I Don't Know
-                                </label>
-                                </div>
-
-                            <!--Submit button-->
-                            <div class="form-group">
-                            
-                                <button type="submit" class="btn btn-primary" onclick="handleClick(this);" id="castedVote" href= ()> Cast your vote! </button>
-                                    <!--^^onclick= insert vote counting function here^^-->
-                                <button class="btn btn-primary" onclick="dbReset();" id="dbReset" href= ()> Refresh Graph</button>
-                                                            <!--^^onclick= insert vote counting function here^^-->
-                            <!-- {{rvalue}}
-                            {{value}} -->
-                            </div>
-                           
-                            </div>
-                        </div>
-                        
-                        
-                        </form>
-                                       
-                    </div>
-            </header>
-            
-
-            <div id="VoteResults">
-
-                <!--Plotly results-->
-                <script>
-                    var xValue = [];
-                    var yValue = [];
-
-                    xValue = ['Yes', 'No', "I Don't Know"];
-                    yValue = {{yAxis}};
-    
-                    // function from survey.js for plotly graph
-                    
-                </script>
-            </div>
-            
+<!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->
   
             <div class="row text-center"> <!--Start footer row-->              
                 <div class="footer navbar-fixed-bottom nav-text">

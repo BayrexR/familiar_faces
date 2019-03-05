@@ -23,11 +23,15 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 #    Database Connection
 #=======================
 #Heroku db environment variables
-usr = os.environ['username'] 
-pwd = os.environ['password']
+# usr = os.environ['username'] 
+# pwd = os.environ['password']
+
+usr = c.username 
+pwd = c.password
+dbName = c.dbName
 
 # conn_string = f"{c.username}:{c.password}@etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qlmvsrhei7a78mbk"
-conn_string = f"{usr}:{pwd}@etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qlmvsrhei7a78mbk"
+conn_string = f"{usr}:{pwd}@localhost:3306/{dbName}"
 engine = create_engine(f'mysql://{conn_string}')
 
 
@@ -57,42 +61,42 @@ app = Flask(__name__)
 #==========
 #Get current survey results
 #==========
-def surveyResults():
-    #Run query
-    with engine.connect() as con:
-        yes = con.execute("SELECT YES FROM class_survey").fetchall()
-        no = con.execute("SELECT NO FROM class_survey").fetchall()
-        idk = con.execute("SELECT IDK FROM class_survey").fetchall()
+# def surveyResults():
+#     #Run query
+#     with engine.connect() as con:
+#         yes = con.execute("SELECT YES FROM class_survey").fetchall()
+#         no = con.execute("SELECT NO FROM class_survey").fetchall()
+#         idk = con.execute("SELECT IDK FROM class_survey").fetchall()
         
-        #Declare vars
-        yList = []
-        nList = []
-        iList = []
+#         #Declare vars
+#         yList = []
+#         nList = []
+#         iList = []
 
-        #Itterate throught list of tuples and push vote values into a list
-        for i in yes:
-            yList.append(int(i[0]))
+#         #Itterate throught list of tuples and push vote values into a list
+#         for i in yes:
+#             yList.append(int(i[0]))
 
-        for i in no:
-            nList.append(int(i[0]))
+#         for i in no:
+#             nList.append(int(i[0]))
 
-        for k in idk:
-            iList.append(int(k[0]))
+#         for k in idk:
+#             iList.append(int(k[0]))
         
-        #Sum the lists and place into variables
-        yesTot = int(sum(yList))
-        noTot = int(sum(nList))
-        idkTot = int(sum(iList))
+#         #Sum the lists and place into variables
+#         yesTot = int(sum(yList))
+#         noTot = int(sum(nList))
+#         idkTot = int(sum(iList))
 
-        #Create plot arrays
-        yAxis = [yesTot, noTot, idkTot]
-        xAxis = ["Yes", "No", "I Don't Know"]
+#         #Create plot arrays
+#         yAxis = [yesTot, noTot, idkTot]
+#         xAxis = ["Yes", "No", "I Don't Know"]
 
-        #Bundle both trace lists into a single list for the return value
-        results = []
-        results.extend((yAxis, xAxis))
+#         #Bundle both trace lists into a single list for the return value
+#         results = []
+#         results.extend((yAxis, xAxis))
 
-    return (results)
+#     return (results)
 
 
 #========================
@@ -105,16 +109,17 @@ def surveyResults():
 #======================
 @app.route("/")
 def welcome():
-    with engine.connect() as con:
-        rsState = con.execute('SELECT state_id, state, geojson, population / 1000000 as population, influence_index, influence_index_er, swing_state, voting_pop_elig, voter_turnout, electoral FROM states_i_vw')
-        rsProp = con.execute('SELECT prop_return, prop_display FROM props_i_vw')    
-        rsSwingState = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, count(1) as value from   states_i_vw group by swing_state")
-        rsSwingElectoral = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(electoral) as value from   states_i_vw group by swing_state")
-        rsSwingTurnout = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, avg(voter_turnout) as value from   states_i_vw group by swing_state")
-        rsSwingPopulation = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(population) as value from   states_i_vw group by swing_state")
+    # with engine.connect() as con:
+    #     rsState = con.execute('SELECT state_id, state, geojson, population / 1000000 as population, influence_index, influence_index_er, swing_state, voting_pop_elig, voter_turnout, electoral FROM states_i_vw')
+    #     rsProp = con.execute('SELECT prop_return, prop_display FROM props_i_vw')    
+    #     rsSwingState = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, count(1) as value from   states_i_vw group by swing_state")
+    #     rsSwingElectoral = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(electoral) as value from   states_i_vw group by swing_state")
+    #     rsSwingTurnout = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, avg(voter_turnout) as value from   states_i_vw group by swing_state")
+    #     rsSwingPopulation = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(population) as value from   states_i_vw group by swing_state")
 
     return (
-       render_template("index.html", rsState=rsState, rsProp=rsProp, rsSwingState=rsSwingState, rsSwingElectoral=rsSwingElectoral, rsSwingTurnout=rsSwingTurnout, rsSwingPopulation=rsSwingPopulation)
+       render_template("index.html")
+        
     )
 
 #=====================
@@ -124,7 +129,7 @@ def welcome():
 def documentation():
     
     return (
-        render_template("documentation.html")
+        render_template("documentation.html")        
     )
 
 #======================
@@ -135,6 +140,7 @@ def survey():
 
     return (
         render_template("survey.html")
+        
     )
 
 #======================
@@ -142,43 +148,43 @@ def survey():
 #======================
 @app.route("/apiV1.0/get_results")
 def getResults():
-    results = surveyResults()
+    # results = surveyResults()
     
-    #Split results into two separate trace lists
-    xAxis = results[1]
-    yAxis = results[0]
+    # #Split results into two separate trace lists
+    # xAxis = results[1]
+    # yAxis = results[0]
 
     return (
-        render_template("survey.html", xAxis=xAxis, yAxis=yAxis)
+        render_template("survey.html")
     )
 
 #======================
 #POST Route publish survey selection to db
 #======================
-@app.route("/apiV1.0/post_results/<value>", methods=["GET", "POST"])
-def postResults(value):
-    print(value)
-    if request.method == "GET":
-        #Code to sql insert query statement
-        if value == "yes":
-            #instert a record with a yes value of 1
-            with engine.connect() as con:
-                print(value)
-                con.execute('INSERT INTO class_survey (YES) VALUES (1);')
-        elif value == "no":
-            #insert a rocord with a no value of 1
-            with engine.connect() as con:
-                print(value)
-                con.execute('INSERT INTO class_survey (NO) VALUES (1);')
-        elif value == "idk":
-            #insert a rocord with a idk value of 1
-            with engine.connect() as con:
-                print(value)
-                con.execute('INSERT INTO class_survey (IDK) VALUES (1);')
-    rvalue = request.method
-    return (
-        redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
-    )
+# @app.route("/apiV1.0/post_results/<value>", methods=["GET", "POST"])
+# def postResults(value):
+#     print(value)
+#     if request.method == "GET":
+#         #Code to sql insert query statement
+#         if value == "yes":
+#             #instert a record with a yes value of 1
+#             with engine.connect() as con:
+#                 print(value)
+#                 con.execute('INSERT INTO class_survey (YES) VALUES (1);')
+#         elif value == "no":
+#             #insert a rocord with a no value of 1
+#             with engine.connect() as con:
+#                 print(value)
+#                 con.execute('INSERT INTO class_survey (NO) VALUES (1);')
+#         elif value == "idk":
+#             #insert a rocord with a idk value of 1
+#             with engine.connect() as con:
+#                 print(value)
+#                 con.execute('INSERT INTO class_survey (IDK) VALUES (1);')
+#     rvalue = request.method
+#     return (
+#         redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
+#     )
 
 #==============
 #Admin page route
@@ -193,24 +199,24 @@ def admin():
 #==============
 #Reset survey table route
 #==============
-@app.route("/apiV1.0/reset")
-def reset():
-    with engine.connect() as con:
-        con.execute("DROP TABLE IF EXISTS class_survey;")
-        con.execute("CREATE TABLE class_survey (vote_id INT AUTO_INCREMENT,YES INT(1) DEFAULT 0, NO INT(1) DEFAULT 0, IDK INT(1) DEFAULT 0,	PRIMARY KEY (vote_id));")
+# @app.route("/apiV1.0/reset")
+# def reset():
+#     with engine.connect() as con:
+#         con.execute("DROP TABLE IF EXISTS class_survey;")
+#         con.execute("CREATE TABLE class_survey (vote_id INT AUTO_INCREMENT,YES INT(1) DEFAULT 0, NO INT(1) DEFAULT 0, IDK INT(1) DEFAULT 0,	PRIMARY KEY (vote_id));")
 
-    return (
-        redirect("https://voter-influence.herokuapp.com/apiV1.0/@dmin", code=302)
-    )
+#     return (
+#         redirect("https://voter-influence.herokuapp.com/apiV1.0/@dmin", code=302)
+#     )
 
 #==============
 #Refresh survey results route
 #==============
-@app.route("/apiV1.0/refresh")
-def refresh():
-    return (
-        redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
-    )
+# @app.route("/apiV1.0/refresh")
+# def refresh():
+#     return (
+#         redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
+#     )
 
 
 if __name__ == '__main__':
