@@ -7,15 +7,34 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Survey</title>
+        <title>Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href="{{url_for('static', filename='assets/css/survey-style.css')}}"/>
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
-        
-        
-    </head>
+        <style>
+            div.a {
+              text-indent: 20px;
+            }
+            
+            div.b {
+              text-indent: 35px;
+            }
+            
+            div.c {
+              text-indent: 50px;
+            }
+            div.d {
+              text-indent: 65px;
+            }
+            ul.a {
+              list-style-type: circle;
+            }
+            ul.b {
+            list-style-type: square;
+            }
+            </style>
+      </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
@@ -33,7 +52,7 @@
                           <span class="icon-bar"></span>
                           <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/">Familiar Faces</a>
+                        <a class="navbar-brand nav-text" href="/">Familiar Faces</a>
                       </div>
                   
                       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,12 +62,13 @@
                           <li><a href="#"></a></li>
                           <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                              <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" aria-label="menu"></span></a>
+                              <span class="glyphicon glyphicon-menu-hamburger nav-text" aria-hidden="true" aria-label="menu"></span></a>
                             <ul class="dropdown-menu">
                               <li><a href="/">Home</a></li>
-                              <li><a href="/documentation">Documentation</a></li>
+                              <li><a href="/project_outcomes">Project Outcome</a></li>
+                              <li><a href="/test_cases">Test Cases</a></li>
                               <li role="separator" class="divider"></li>
-                              <li><a href="/survey">Survey</a></li>
+                              <li><a href="/documentation">Documentation</a></li>
                             </ul>
                           </li>
                         </ul>
@@ -57,33 +77,30 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
-<h1>SURVEY ROUTE</h1>
+<h1>ADMIN ROUTE</h1>
 
+<!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->           
+<div class="row text-center"> <!--Start footer row-->              
+    <div class="footer navbar-fixed-bottom nav-text">
+      Familiar Faces (c) | UCF Data Boot Camp
+        <a href="https://github.com/BayrexR/VoterInfluence-Heroku">
+            <img src="{{url_for('static', filename='assets/img/github_logo.png')}}" style="width:25px; height:25px;" id="GitHub-logo" alt="GitHub Logo" title="Click to see the repo on GitHub">
+        </a>
+    </div>                         
+</div><!--End footer row-->
 
-<!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->
-  
-            <div class="row text-center"> <!--Start footer row-->              
-                <div class="footer navbar-fixed-bottom nav-text">
-                  Familiar Faces (c) | UCF Data Boot Camp
-                    <a href="https://github.com/BayrexR/VoterInfluence-Heroku">
-                        <img src="{{url_for('static', filename='assets/img/github_logo.png')}}" style="width:25px; height:25px;" id="GitHub-logo" alt="GitHub Logo" title="Click to see the repo on GitHub">
-                    </a>
-                </div>                         
-            </div><!--End footer row-->
+</div><!--End main container-->
 
-        </div><!--End main container-->
-
-                <!--Latest minified jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-                <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-                <!-- minified plotly.js -->
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <!-- <script type="text/javascript" src="/static/assets/js/app.js"></script> -->
-        <script type="text/javascript" src="/static/assets/js/survey.js"></script>
-        <script type="text/javascript" src="/static/assets/js/survey_plot.js"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='assets/js/survey_plot.js')}}"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='assets/js/survey.js')}}"></script>
-        
-    </body>
+  <!--Latest minified jquery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- minified plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- <script type="text/javascript" src="/static/assets/js/app.js"></script> -->
+<script type="text/javascript" src="/static/assets/js/survey.js"></script>
+<script type="text/javascript" src="/static/assets/js/survey_plot.js"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/js/survey_plot.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='assets/js/survey.js')}}"></script>
+</body>
 </html>
