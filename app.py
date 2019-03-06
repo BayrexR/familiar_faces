@@ -29,9 +29,12 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.DEBUG)
 usr = c.username 
 pwd = c.password
 dbName = c.dbName
+dbHost = c.dbHost
+dbPort = c.dbPort
 
 # conn_string = f"{c.username}:{c.password}@etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qlmvsrhei7a78mbk"
-conn_string = f"{usr}:{pwd}@localhost:3306/{dbName}"
+# conn_string = f"{usr}:{pwd}@localhost:3306/{dbName}"
+conn_string = f"{usr}:{pwd}@{dbHost}:{dbPort}/{dbName}"
 engine = create_engine(f'mysql://{conn_string}')
 
 
