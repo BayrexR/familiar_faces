@@ -58,7 +58,77 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
-<h1>SURVEY ROUTE</h1>
+<h1>TEST CASES ROUTE</h1>
+<div class="row"></div>
+<div class="row">
+  <div class="col-xs-12">
+    <h5>Property:         
+      <select class="custom-select" id="selProperty" onchange="optionChanged(this.value)">              
+        {% for prop in rsProp %}
+          <option value="{{prop[0]}}">{{prop[1]}}</option>
+        {% endfor %}
+      </select>
+  </h5> 
+  </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="text-center">
+          <div id="celeb1-plot-id" style="height: 350px;"></div>      
+        </div>
+    </div>
+</div>
+<div class="row" > 
+  <div class="col-xs-4">
+      <div class="text-center">
+        <div id="celeb1-pic-id" style="height: 350px;"></div>
+      </div>
+  </div>
+  <div class="col-xs-8">
+      <div class="text-center">
+        <div id="celeb1-plot-id" style="height: 350px;"></div>      
+      </div>
+  </div>
+</div>
+<div class="row" > 
+    <div class="col-xs-4">
+        <div class="text-center">
+          <div id="celeb1-emotion1-id" style="height: 250px;"></div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="text-center">
+          <div id="celeb1-emotion2-id" style="height: 250px;"></div>      
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div class="text-center">
+          <div id="celeb1-emotion3-id" style="height: 250px;"></div>      
+        </div>
+    </div>
+  </div>
+<div class="row">
+  <div class="col-xs-3">
+    <div class="text-center">
+      <div id="celeb1-emotion4-id" style="height: 250px;"></div>      
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="text-center">
+      <div id="celeb1-emotion5-id" style="height: 250px;"></div>      
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="text-center">
+      <div id="celeb1-emotion6-id" style="height: 250px;"></div>      
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="text-center">
+      <div id="celeb1-emotion7-id" style="height: 250px;"></div>      
+    </div>
+  </div>
+</div>
 
 
 <!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->
