@@ -78,26 +78,51 @@
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
 <h1>ADMIN ROUTE</h1>
-<div class="col-xs-6">
+<div class="col-xs-12">
   <div class="text-center">
-    <div id="plot-id" style="height: 450px;"></div>      
+    <div id="emotion-id" style="height: 450px;"></div>      
+  </div>
+</div>
+<div class="col-xs-12">
+  <div class="text-center">
+    <div id="gender-id" style="height: 450px;"></div>      
   </div>
 </div>
 
 <script>  
   // Declare global variables to be used in JS scripts
-  var modelName= [];
-  var pctCorrect = [];
+  var emotionModelName= [];
+  var genderModelName= [];
+  var emotionPctCorrect = [];
+  var genderPctCorrect = [];
   var rowOutcome = [];
 </script>
 
 {% for rowOutcome in rsOutcome %}
 <script>
   // Populate arrays to be used by outcomePlot
-  modelName.push('{{rowOutcome[0]}}');
-  pctCorrect.push(parseFloat('{{rowOutcome[1]}}'));
-  rowOutcome.push('{{rowOutcome[0]}}', '{{rowOutcome[1]}}');
-  console.log(modelName, pctCorrect);
+  switch ('{{rowOutcome[0]}}') {
+    case 'M2':
+    case 'M5':
+    case 'M10':
+    case 'M35':
+    case 'M70':
+    case 'S2':
+    case 'S5':
+    case 'S10':
+    case 'S35':
+    case 'S70':
+      genderModelName.push('{{rowOutcome[0]}}');
+      genderPctCorrect.push('{{rowOutcome[1]}}');
+    break;
+    default:
+      emotionModelName.push('{{rowOutcome[0]}}');
+      emotionPctCorrect.push('{{rowOutcome[1]}}');
+  };
+  // modelName.push('{{rowOutcome[0]}}');
+  // pctCorrect.push(parseFloat('{{rowOutcome[1]}}'));
+  // rowOutcome.push('{{rowOutcome[0]}}', '{{rowOutcome[1]}}');
+  // console.log(modelName, pctCorrect);
 </script>                                
 {% endfor %}
 <!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->           
@@ -119,6 +144,7 @@
   <!-- minified plotly.js -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="/static/assets/js/project_outcomes.js"></script>
-<script>createPlot(modelName, pctCorrect)</script>
+<script>createEmotionPlot(emotionModelName, emotionPctCorrect);
+createGenderPlot(genderModelName, genderPctCorrect);</script>
 </body>
 </html>
