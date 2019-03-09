@@ -57,14 +57,31 @@
 
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
     <div class="row"> <!--Begin Main Row-->
-      <div class="row">
-        <!-- <div class="col-sm-1"></div> -->
+      <div class="row">        
         <div class="col-sm-12"> <!--Begin Slideshow Collage Div-->
+          
           <figure>
             <img src="{{url_for('static', filename='assets/img/collage2.png')}}" id="collage">
           </figure>
-        </div> 
-        <!-- <div class="col-sm-1"></div> -->
+
+          <!-- Carousel -->
+          <!-- <header>
+          <div id="collage" class="carousel slide carousel-fade" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-interval="10000">
+                  <img src="{{url_for('static', filename='assets/img/collage3.png')}}" id="collage3" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-interval="10000">
+                <img src="{{url_for('static', filename='assets/img/collage4.png')}}" id="collage4" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-interval="10000">
+                <img src="{{url_for('static', filename='assets/img/collage5.png')}}" id="collage5" class="d-block w-100" alt="...">
+              </div>
+            </div>
+          </div>
+          </header> -->
+
+        </div>         
       </div>
 
       <div>
@@ -131,6 +148,9 @@
   <script type="text/javascript" src="static/assets/js/logic_map.js"></script>
   <script type="text/javascript" src="{{url_for('static', filename='assets/js/logic_plot.js')}}"></script>
   <script type="text/javascript" src="{{url_for('static', filename='assets/js/logic_map.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='assets/js/slides.js')}}"></script>
+  <script>$('#collage-fig').css('display', 'inline-block').hide().fadeIn();</script>
+
 
 </body>
 </html>
