@@ -77,15 +77,17 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
-<h1>ADMIN ROUTE</h1>
+<h1 align="center">PROJECT OUTCOME</h1>
 <div class="col-xs-12">
   <div class="text-center">
-    <div id="emotion-id" style="height: 450px;"></div>      
+    <div id="emotion-id" style="height: 600px;"></div>   
+    <div class="text-center">Emotion Model Conclusion</div>    
   </div>
 </div>
 <div class="col-xs-12">
   <div class="text-center">
-    <div id="gender-id" style="height: 450px;"></div>      
+    <div id="gender-id" style="height: 600px;"></div>    
+    <div class="text-center">Gender Model Conclusion</div>    
   </div>
 </div>
 
@@ -119,13 +121,11 @@
       emotionModelName.push('{{rowOutcome[0]}}');
       emotionPctCorrect.push('{{rowOutcome[1]}}');
   };
-  // modelName.push('{{rowOutcome[0]}}');
-  // pctCorrect.push(parseFloat('{{rowOutcome[1]}}'));
-  // rowOutcome.push('{{rowOutcome[0]}}', '{{rowOutcome[1]}}');
-  // console.log(modelName, pctCorrect);
 </script>                                
 {% endfor %}
+
 <!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->           
+
 <div class="row text-center"> <!--Start footer row-->              
     <div class="footer navbar-fixed-bottom nav-text">
       Familiar Faces (c) | UCF Data Boot Camp
@@ -145,6 +145,6 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="/static/assets/js/project_outcomes.js"></script>
 <script>createEmotionPlot(emotionModelName, emotionPctCorrect);
-createGenderPlot(genderModelName, genderPctCorrect);</script>
+        createGenderPlot(genderModelName, genderPctCorrect);</script>
 </body>
 </html>

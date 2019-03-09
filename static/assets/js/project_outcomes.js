@@ -128,14 +128,15 @@ var data = [EM2, EM5, EM10, EM35, EM70];
 
     // Create custom layout
     var layout = {
-      //title: "Model Outcomes",
+      title: "Emotion Model Outcomes",
       yaxis: {title: '% Correct'},
+      xaxis: {title: 'Model'},
       showlegend:true,
       margin: {
-          t: 20, //top margin
+          t: 70, //top margin
           l: 50, //left margin
           r: 50, //right margin
-          b: 140 //bottom margin
+          b: 70 //bottom margin
     
       } 
   };
@@ -192,18 +193,19 @@ function createGenderPlot(genderModelName, genderPctCorrect) {
   
       // Create custom layout
       var layout = {
-        //title: "Model Outcomes",
+        title: "Gender Model Outcomes",
         yaxis: {title: '% Correct'},
+        xaxis: {title: 'Model'},
         showlegend:true,
         margin: {
-            t: 20, //top margin
+            t: 70, //top margin
             l: 50, //left margin
             r: 50, //right margin
-            b: 140 //bottom margin
+            b: 70 //bottom margin
       
         } 
     };
   
 
-      // Render the plot to the div tag with id "plot"
-  Plotly.newPlot("gender-id", data, layout);}
+    // Render the plot to the div tag with id "plot"
+Plotly.newPlot("gender-id", data, layout);}
