@@ -138,11 +138,11 @@ def documentation():
 #======================
 #Route to Class Survey Page
 #======================
-@app.route("/survey")
+@app.route("/test_cases")
 def survey():
 
     return (
-        render_template("survey.html")
+        render_template("test_cases.html")
         
     )
 
@@ -192,12 +192,12 @@ def getResults():
 #==============
 #Admin page route
 #==============
-@app.route("/apiV1.0/@dmin")
+@app.route("/project_outcomes")
 def admin():
-    "DB reset"
-    return (
-        render_template("admin.html")
-    )
+    with engine.connect() as con:
+        rsOutcome = con.execute('SELECT model_name, pct_correct FROM outcome_vw')
+
+    return(render_template("project_outcomes.html", rsOutcome = rsOutcome))
 
 #==============
 #Reset survey table route
