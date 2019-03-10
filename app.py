@@ -138,13 +138,31 @@ def documentation():
 #======================
 #Route to Class Survey Page
 #======================
-@app.route("/test_cases")
-def survey():
+@app.route("/test_cases/")
+def test_cases():
+    with engine.connect() as con:    
+        rsAfraid    = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'afraid'")
+        rsAngry     = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'angry'")
+        rsDisgusted = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'disgusted'")
+        rsHappy     = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'happy'")
+        rsNeutral   = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'neutral'")
+        rsSad       = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'sad'")
+        rsSurprised  = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'surprised'")
+        rsMale      = con.execute("Select model_name, prctCorrect from gen_grouped_results_vw where file_gender = 'male'")
+        rsFemale    = con.execute("Select model_name, prctCorrect from gen_grouped_results_vw where file_gender = 'female'")
 
+        rsModelAM = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'AM%'")
+        rsModelAS = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'AS%'")
+        rsModelFM = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'FM%'")
+        rsModelFS = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'FS%'")
+        rsModelMM = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'MM%'")
+        rsModelMS = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'MS%'")
+        
     return (
-        render_template("test_cases.html")
+        render_template("test_cases.html", rsAfraid=rsAfraid, rsAngry=rsAngry, rsDisgusted=rsDisgusted, rsHappy=rsHappy, rsNeutral=rsNeutral, rsSad=rsSad, rsSurprised=rsSurprised, rsMale=rsMale, rsFemale=rsFemale, rsModelAM=rsModelAM, rsModelAS= rsModelAS, rsModelFM= rsModelFM, rsModelFS= rsModelFS, rsModelMM= rsModelMM, rsModelMS=rsModelMS)
         
     )
+
 
 #======================
 #GET Route to pull results of survey from db for plot

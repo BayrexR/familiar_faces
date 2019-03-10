@@ -2,7 +2,7 @@
 
 #Localhost dev db credentials
 username = "root"
-password = "root"
+password = "Bulletmushrooms33!"
 dbHost = "localhost"
 dbPort = "3306"
 dbName = "familiar_faces_db"

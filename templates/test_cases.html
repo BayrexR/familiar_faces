@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/survey-style.css')}}"/>
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}"/>
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
     </head>
     <body>
@@ -58,66 +58,196 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
-<h1>TEST CASES ROUTE</h1>
+<h1>TEST CASES</h1>
 <div class="row"></div>
-<div class="row">
-  <div class="col-xs-12">
-    <h5>Emotion:         
-      <select class="custom-select" id="selProperty" onchange="optionChanged(this.value)">              
-        {% for prop in rsProp %}
-          <option value="{{prop[0]}}">{{prop[1]}}</option>
-        {% endfor %}
-      </select>
-  </h5> 
-  </div>
-</div>
 
 <section class="plot-container">
   <article class="index-intro">
     <div class="container-fluid">        
-      <h1>BLAH BLAH BLAH
-        </h1>
-      <div class="model-plot"></div>  
+      <h2>Test Cases Based on Emotion</h2>
+      <div id="plot-emotion-id"></div>  
+      <br>
+      <h2>Test Cases Based on Gender</h2>
+    <div id ="plot-gender-id"></div>
+    </div>
   </article>
 </section>
 
-<article class="index-gallery">
-<div class="container-fluid">
-  <div class="row"> 
+<row>
+  <section>
+    <div class="container-fluid">
+      <div class="col-md-4 ">
+        <div id="model1-data-plot"></div>
+      </div>
+      <div class="col-md-4 ">
+        <div id="model2-data-plot"></div>
+      </div>
+      <div class="col-md-4 ">
+        <div id="model3-data-plot"></div>
+      </div>
+    </div>
+  </section>
+</row>
 
-      <div class="col-sm-2 center">
-          <div class="text-center">
-            <img class="img-face1" src ="img-face-1">
-          </div>
+<row>
+  <section>
+    <div class="container-fluid">
+      <div class="col-md-4 ">
+        <div id="model4-data-plot"></div>
       </div>
-      <div class="col-sm-2 center">
-          <div class="text-center">
-            <img class="img-face2" src ="img-face-2">
-          </div>
+      <div class="col-md-4 ">
+        <div id="model5-data-plot"></div>
       </div>
-      <div class="col-sm-2 center">
-          <div class="text-center">
-            <img class="img-face3" src ="img-face-3">
-          </div>
+      <div class="col-md-4 ">
+        <div id="model6-data-plot"></div>
       </div>
-      <div class="col-sm-2 center">
-          <div class="text-center">
-            <img class="img-face4" src ="img-face-4">
-          </div>
-      </div>
-      <div class="col-sm-2 center">
-          <div class="text-center">
-            <img class="img-face5" src ="img-face-5">
-          </div>
-      </div>
-      <div class="col-sm-2 center">
-          <div class="text-center">
-            <img class="img-face6" src ="img-face-6">
-          </div>
-      </div>
-  </div>
-</div>
-</article>
+    </div>
+  </section>
+</row>
+
+<script>
+
+mpEModel = []
+mpAfraid = []
+mpAngry =[]
+mpDisgusted = []
+mpHappy = []
+mpNeutral= []
+mpSad = []
+mpSurprised = []
+
+mpGModel=[]
+mpMale=[]
+mpFemale=[]
+
+mpModelAM = []
+mpModelAS = []
+mpModelFM = []
+mpModelFS = []
+mpModelMM = []
+mpModelMS = []
+
+mp_AM = []
+mp_AS = []
+mp_FM = []
+mp_FS = []
+mp_MM = []
+mp_MS = []
+
+</script>
+<!-- EMOTIONS CHART VARIABLE -->
+{% for rowAfraid in rsAfraid %}
+  <script>
+    mpEModel.push('{{rowAfraid[0]}}')
+    mpAfraid.push('{{rowAfraid[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowAngry in rsAngry %}
+  <script>
+    mpAngry.push('{{rowAngry[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowDisgusted in rsDisgusted %}
+  <script>
+    mpDisgusted.push('{{rowDisgusted[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowHappy in rsHappy %}
+  <script>
+    mpHappy.push('{{rowHappy[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowNeutral in rsNeutral %}
+  <script>
+    mpNeutral.push('{{rowNeutral[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowSad in rsSad %}
+  <script>
+    mpSad.push('{{rowSad[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowSurprised in rsSurprised %}
+  <script>
+    mpSurprised.push('{{rowSurprised[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- GENDER CHART VARIABLE -->
+
+{% for rowMale in rsMale %}
+  <script>
+    mpGModel.push('{{rowMale[0]}}')
+    mpMale.push('{{rowMale[1]}}')
+  </script>      
+{% endfor %}
+
+{% for rowFemale in rsFemale %}
+  <script>
+    mpFemale.push('{{rowFemale[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- AM MODEL CHART VARIABLE -->
+
+{% for row_AM in rs_AM %}
+  <script>
+    mpModelAM.push('{{mpModelAM[0]}}')
+    mp_AM.push('{{row_AM[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- AM MODEL CHART VARIABLE -->
+
+{% for row_AS in rs_AS %}
+  <script>
+    mpModelAS.push('{{mpModelAS[0]}}')
+    mp_AS.push('{{row_AS[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- AM MODEL CHART VARIABLE -->
+
+{% for row_FM in rs_FM %}
+  <script>
+    mpModelFM.push('{{mpModelFM[0]}}')
+    mp_FM.push('{{row_FM[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- AM MODEL CHART VARIABLE -->
+
+{% for row_FS in rs_FS %}
+  <script>
+    mpModelFS.push('{{mpModelFS[0]}}')
+    mp_FS.push('{{row_FS[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- AM MODEL CHART VARIABLE -->
+
+{% for row_MM in rs_MM %}
+  <script>
+    mpModelMM.push('{{mpModelMM[0]}}')
+    mp_MM.push('{{row_MM[1]}}')
+  </script>      
+{% endfor %}
+
+<!-- AM MODEL CHART VARIABLE -->
+
+{% for row_MS in rs_MS %}
+  <script>
+    mpModelMS.push('{{mpModelMS[0]}}')
+    mp_MS.push('{{row_MS[1]}}')
+  </script>      
+{% endfor %}
+
 <!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->
   
             <div class="row text-center"> <!--Start footer row-->              
@@ -132,16 +262,14 @@
         </div><!--End main container-->
 
                 <!--Latest minified jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
                 <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
                 <!-- minified plotly.js -->
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <!-- <script type="text/javascript" src="/static/assets/js/app.js"></script> -->
-        <script type="text/javascript" src="/static/assets/js/survey.js"></script>
-        <script type="text/javascript" src="/static/assets/js/survey_plot.js"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='assets/js/survey_plot.js')}}"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='assets/js/survey.js')}}"></script>
+        <script type="text/javascript" src="/static/assets/js/test_cases.js"></script>
+        
         
     </body>
 </html>
