@@ -112,16 +112,20 @@ app = Flask(__name__)
 #======================
 @app.route("/")
 def welcome():
-    # with engine.connect() as con:
-    #     rsState = con.execute('SELECT state_id, state, geojson, population / 1000000 as population, influence_index, influence_index_er, swing_state, voting_pop_elig, voter_turnout, electoral FROM states_i_vw')
-    #     rsProp = con.execute('SELECT prop_return, prop_display FROM props_i_vw')    
-    #     rsSwingState = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, count(1) as value from   states_i_vw group by swing_state")
-    #     rsSwingElectoral = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(electoral) as value from   states_i_vw group by swing_state")
-    #     rsSwingTurnout = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, avg(voter_turnout) as value from   states_i_vw group by swing_state")
-    #     rsSwingPopulation = con.execute("SELECT case when swing_state = 1 then 'High' when swing_state = .5 then 'Moderate' when swing_state = 0 then 'Never' end as label, sum(population) as value from   states_i_vw group by swing_state")
 
     return (
        render_template("index.html")
+        
+    )
+
+#======================
+#Route to About the Team page
+#======================
+@app.route("/about")
+def about():
+
+    return (
+       render_template("about.html")
         
     )
 
@@ -136,7 +140,7 @@ def documentation():
     )
 
 #======================
-#Route to Class Survey Page
+#Route to Test Cases Page
 #======================
 @app.route("/test_cases/")
 def test_cases():
@@ -208,7 +212,7 @@ def getResults():
 #     )
 
 #==============
-#Admin page route
+#Project Outcomes page route
 #==============
 @app.route("/project_outcomes")
 def admin():
@@ -217,27 +221,7 @@ def admin():
 
     return(render_template("project_outcomes.html", rsOutcome = rsOutcome))
 
-#==============
-#Reset survey table route
-#==============
-# @app.route("/apiV1.0/reset")
-# def reset():
-#     with engine.connect() as con:
-#         con.execute("DROP TABLE IF EXISTS class_survey;")
-#         con.execute("CREATE TABLE class_survey (vote_id INT AUTO_INCREMENT,YES INT(1) DEFAULT 0, NO INT(1) DEFAULT 0, IDK INT(1) DEFAULT 0,	PRIMARY KEY (vote_id));")
 
-#     return (
-#         redirect("https://voter-influence.herokuapp.com/apiV1.0/@dmin", code=302)
-#     )
-
-#==============
-#Refresh survey results route
-#==============
-# @app.route("/apiV1.0/refresh")
-# def refresh():
-#     return (
-#         redirect("https://voter-influence.herokuapp.com/apiV1.0/get_results", code=302)        
-#     )
 
 
 if __name__ == '__main__':
