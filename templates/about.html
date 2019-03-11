@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Documentation</title>
+        <title>About the Team</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -28,10 +28,16 @@
               text-indent: 65px;
             }
             ul.a {
-              list-style-type: circle;
+            list-style-type: circle;
             }
             ul.b {
             list-style-type: square;
+            }
+            h2 {
+              font-size: 32px;
+            }
+            h3 {
+              font-size: 23px;
             }
             </style>
       </head>
@@ -78,62 +84,28 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
-<h1 align="center">PROJECT OUTCOME</h1>
-<div class="col-xs-12">
-  <div class="text-center">
-    <div id="emotion-id" style="height: 600px;"></div>   
-    <div class="text-center">Emotion Model Conclusion</div>    
-  </div>
-</div>
-<div class="col-xs-12">
-  <div class="text-center">
-    <div id="gender-id" style="height: 600px;"></div>    
-    <div class="text-center">Gender Model Conclusion</div>    
-  </div>
-</div>
+            <div class="row"> <!--Begin Main Row-->
+              <div class="col-sm-12">
+                <div id="mothodology">
+                  <h1>Intro Content</h1>
+                </div>
 
-<script>  
-  // Declare global variables to be used in JS scripts
-  var emotionModelName= [];
-  var genderModelName= [];
-  var emotionPctCorrect = [];
-  var genderPctCorrect = [];
-  var rowOutcome = [];
-</script>
+                <div id="ml_alg">
+                  <h1>Intro Content</h1>
+                </div>
+              </div>
+            </div><!--Begin Main Row-->
+            <h1>DOCUMENTATION ROUTE</h1>
 
-{% for rowOutcome in rsOutcome %}
-<script>
-  // Populate arrays to be used by outcomePlot
-  switch ('{{rowOutcome[0]}}') {
-    case 'M2':
-    case 'M5':
-    case 'M10':
-    case 'M35':
-    case 'M70':
-    case 'S2':
-    case 'S5':
-    case 'S10':
-    case 'S35':
-    case 'S70':
-      genderModelName.push('{{rowOutcome[0]}}');
-      genderPctCorrect.push('{{rowOutcome[1]}}');
-    break;
-    default:
-      emotionModelName.push('{{rowOutcome[0]}}');
-      emotionPctCorrect.push('{{rowOutcome[1]}}');
-  };
-</script>                                
-{% endfor %}
-
-<!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->           
-
+<!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->            
 <div class="row text-center"> <!--Start footer row-->              
-    <div class="footer navbar-fixed-bottom nav-text">
-      Familiar Faces (c) | UCF Data Boot Camp
-        <a href="https://github.com/BayrexR/FamiliarFaces_Heroku">
-            <img src="{{url_for('static', filename='assets/img/github_logo.png')}}" style="width:25px; height:25px;" id="GitHub-logo" alt="GitHub Logo" title="Click to see the repo on GitHub">
-        </a>
-    </div>                         
+  <div class="footer navbar-fixed-bottom nav-text">
+    Familiar Faces (c) | UCF Data Boot Camp
+    <a href="https://github.com/BayrexR/FamiliarFaces_Heroku">
+      <img src="{{url_for('static', filename='assets/img/github_logo.png')}}" style="width:25px; height:25px;" id="GitHub-logo" alt="GitHub Logo" title="Click to see the repo on GitHub">
+    </a>
+  </div> 
+                          
 </div><!--End footer row-->
 
 </div><!--End main container-->
@@ -144,8 +116,5 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- minified plotly.js -->
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script type="text/javascript" src="/static/assets/js/project_outcomes.js"></script>
-<script>createEmotionPlot(emotionModelName, emotionPctCorrect);
-        createGenderPlot(genderModelName, genderPctCorrect);</script>
 </body>
 </html>
