@@ -87,16 +87,97 @@
             <div class="row"> <!--Begin Main Row-->
               <div class="col-sm-12">
                 <div id="mothodology">
-                  <h1>Intro Content</h1>
+                  <h1><strong>Methodology</strong></h1>
+                  <uL>
+                    <LI><strong>Face detection:</strong> It is the process of locating a face region in an image (a large rectangle near the center of the face). This step does not care who the person is, just that it is a human face.</LI>
+                    <LI><strong>Collect and learn faces:</strong> It is the process of saving many faces (for each emotion and gender) and then learning how to recognize them.</LI>
+                    <LI><strong>Emotion recognition:</strong> It is the process that checks which of the collected emotion are most similar to the face in the photo and give us the result.</LI>
+                    <li><strong>gender recognition:</strong> It is the process that checks the gender of the face in the photo and give us the result.</li>
+                  </uL>
                 </div>
 
                 <div id="ml_alg">
-                  <h1>Intro Content</h1>
+                  <h1><strong>Ml Algorithm Description</strong></h1>
+                  <h3><strong>Data Preprocessing</strong></h3>
+                  <ul>
+                    <li>Collecting photos from KDEF dataset </li>
+                    <li>Splitting photos as different emotion, gender and face angle</li>
+                    <li>Prepare the imaged to be trained by run python3 emotion_data_prep.py for emotion and python3 gender_data_prep.py for gender</li>
+                    <li>Training 40 custom model (30 for emotion and 13 for gender)</li>
+                    <li>Testing each model and store the result into database </li>
+                    <li>Using the database to visualize the result vs the reality to get a clear understanding of each model accuracy</li>
+                  </ul>
+                  <br>
+                  <h3><strong>About KDEF</strong></h3>
+                  <section>
+                    The Karolinska Directed Emotional Faces (KDEF) is a set of totally 4900 pictures of human facial expressions of emotion. The material was developed in 1998 by Daniel Lundqvist, Anders Flykt and Professor Arne Öhman at Karolinska Institutet, Department of Clinical Neuroscience, Section of Psychology, Stockholm, Sweden.
+                    <br>
+                    <br>
+                    The material was originally developed to be used for psychological and medical research purposes. More specifically material was made to be particularly suitable for perception, attention, emotion, memory and backward masking experiments. Hence, particular attention was for instance paid to create a soft, even light, shooting expressions in multiple angles, use of uniform T-shirt colors, and use of a grid to center participants face during shooting, and positioning of eyes and mouths in fixed image coordinates during scanning.
+                    <br>
+                    <br>
+                    The set contains 70 individuals, each displaying 7 different emotional expressions, each expression being photographed (twice) from 5 different angles. For more info <a href="http://www.emotionlab.se/kdef/">http://www.emotionlab.se/kdef/</a>.
+                    <br>
+                  </section>
+                  <h3><strong>Models</strong></h3>
+                  <ul>
+                    <li><strong>HaarCascade</strong>
+                      <br>
+                      These models are provided by OpenCV and allow the program to detect human faces. If for some reason you want to change the way this program detect human faces, open face_detection.py, search the following line: faceCascade = cv2.CascadeClassifier('models/haarcascade_frontalface_alt.xml') and change the model path to the desired one</li>
+                      <br>
+                      <br>
+                    <li><strong>Emotion Classifier</strong>
+                      <br>
+                      These 30 models are created with train_emotion_classifier.py. Each model is trained with the dataset from KDEF.
+                      <br>
+                      using this hierarchy to put each emotion photo on the correct folder
+                      <br>
+                      <pre>
+                          ├── data
+                          ├── raw_emotion
+                              ├── afraid
+                              ├── angry
+                              ├── disgusted
+                              ├── happy
+                              ├── neutral
+                              ├── sad
+                              ├── surprised
+                      </pre>
+                      Then run 
+                      <br>
+                      python3 emotion_data_prep.py 
+                      <br>
+                      python3 train_emotion-classifier.py
+                      <br>
+                    </li>
+                    <br>
+                    <br>
+                    <li>
+                      <strong>Gender Classifier</strong>
+                      <br>
+                      These 13 models are created with train_gender_classifier.py
+                      <br>
+                      putting each gender on its specific folder 
+                      <pre>
+                          ├── data
+                          ├── raw_gender
+                              ├── male
+                              ├── female                      
+                      </pre>
+                      Then run
+                      <br>
+                      python3 gender_data_prep.py
+                      <br>
+                      python3 train_gender_classifier.py
+                      <br>
+                    </li>
+                    <br>
+                    <br>
+                    <img src="static/assets/img/emotion_table.jpeg">
+                  </ul>
                 </div>
               </div>
             </div><!--Begin Main Row-->
-            <h1>DOCUMENTATION ROUTE</h1>
-
 <!----------------------------------------------END PAGE CONTENT--------------------------------------------------------->            
 <div class="row text-center"> <!--Start footer row-->              
   <div class="footer navbar-fixed-bottom nav-text">
