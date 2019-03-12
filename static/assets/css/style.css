@@ -76,7 +76,6 @@ div{
   padding: 10px;
   margin: 10px;
   width: 100%;
-  /* float: left; */
 }
 
 img.scaled {
@@ -113,6 +112,7 @@ section{
 h1{
   text-align: center;
 }
+/* Team member Cards */
 
 /* Atricle divs */
 article h2{
@@ -126,60 +126,16 @@ article h2{
 
 pre{
   font-weight: bold;
-  width: 75%;
+  width: 90%;
   text-align: center;
-  margin-left:12.5%;
+  margin-left: 5%;
   height:100%;
 }
 
 #layout-div{
   margin-left: 30px;
 }
-/* ------- */
-/* @keyframes FadeInOut {
-    0% {
-      opacity:1;
-    }
-    17% {
-      opacity:1;
-    }
-    25% {
-      opacity:0;
-    }
-    92% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
-  
-  #cf img:nth-of-type(1) {
-    animation-delay: 6s;
-  }
-  #cf img:nth-of-type(2) {
-    animation-delay: 4s;
-  }
-  #cf img:nth-of-type(3) {
-    animation-delay: 2s;
-  }
-  #cf img:nth-of-type(4) {
-    animation-delay: 0;
-  } */
-
-
-
-/* ---------- */
-
-/* .carousel-item {
-    height: 100vh;
-    min-height: 350px;
-    background: no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  } */
+/* Article divs */
 
 
 .item .img{
