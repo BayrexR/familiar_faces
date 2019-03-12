@@ -7,7 +7,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>About the Team</title>
+        <title>The Team</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -85,104 +85,177 @@
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
             <div class="row"> <!--Begin Main Row-->
-              <div class="col-sm-12">
-                <div id="mothodology">
-                  <h1>About the Team</h1>
-                </div>
-                <div class="row">
-
-                  <div class="col-xsm-12 col-med-3 col-lg">                    
-                    <div id="team-member">
-                      <h3>Name 1</h3>
-                      <div>
-                        <figure>
-                          <a href="">
-                            <img src="" alt="Name"/>
-                          </a>
-                        </figure>
-                        <section class="data-card">
-                          <span class="email"></span></br>
-                          <span class="linkedin"></span>
-                          <span class="github"></span></br>
-                        </section>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-xsm-12 col-med-3 col-lg">
-                      <div id="team-member">
-                        <h3>Name 2</h3>
-                        <div>
-                            <figure>
-                              <a href="">
-                                <img src="" alt="Name"/>
-                              </a>
-                            </figure>
-                            <section class="data-card">
-                              <span class="bio"></span></br>
-                              <span class="linkedin"></span></br>
-                              <span class="github"></span></br>
-                            </section>
-                        </div>
-                      </div>
-                  </div>
-
-                  <div class="col-xsm-12 col-med-3 col-lg">
-                      <div id="team-member">
-                        <h3>Chris Tran</h3>
-                        <div>
-                            <figure>
-                              <a href="">
-                                <img src="{{url_for('static', filename='assets/img/chris.jpg')}}" alt="Name"/>
-                              </a>
-                            </figure>
-                            <section class="data-card">
-                              <span class="bio"></span></br>
-                              <span class="linkedin"> <strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/c_tran301/">https://www.linkedin.com/in/c_tran301/</a></span></br>
-                              <span class="github"><strong>GitHub: </strong><a href="https://www.github.com/c_tran301/">https://www.github.com/c_tran301/</a></span></br>
-                            </section>
-                        </div>
-                      </div>
-                  </div>
-
-                  <div class="col-xsm-12 col-med-3 col-lg">
-                      <div id="team-member">
-                        <h3>Emil Rodulfo</h3>
-                        <div>
-                            <figure>
-                              <a href="">
-                                <img src="" alt="Name"/>
-                              </a>
-                            </figure>
-                            <section class="data-card">
-                              <span class="bio"></span></br>
-                              <span class="linkedin"><strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/emil-rodulfo/">https://www.linkedin.com/in/emil-rodulfo/</a></span></br>
-                              <span class="github"><strong>GitHub: </strong><a href="https://github.com/emilrodulfo">https://github.com/emilrodulfo</a></span></br>
-                            </section>
-                        </div>
-                      </div>
-                  </div>
-
-                  <div class="col-xsm-12 col-med-3 col-lg">
-                      <div id="team-member">
-                        <h3>Martina Abomosa</h3>
-                        <div>
-                            <figure>
-                              <a href="">
-                                <img src="{{url_for('static', filename='assets/img/martina.jpg')}}" alt="Name"/>
-                              </a>
-                            </figure>
-                            <section class="data-card">
-                              <span class="bio"></span></br>
-                              <span class="linkedin"><strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/martina-abomosa-1259b5167/">https://www.linkedin.com/in/martina-abomosa-1259b5167/</a></span></br>
-                              <span class="github"><strong>GitHub: </strong><a href="https://github.com/martinamagdy">https://github.com/martinamagdy</a></span></br>
-                            </section>
-                        </div>
-                      </div>
-                  </div>
-                  
+              <div class="row">
+                <div class="col-12">
+                  <h1 id="Page-title">The Team</h1>
                 </div>
               </div>
+              <div class="row">
+
+                <div class="col-1"></div>
+                <div class="col-12 col-sm-4 col-lg-2">
+                    <div id="team-member">                        
+                      <div>
+                          <figure class="profile">
+                            <a href="https://www.linkedin.com/in/tim/">
+                              <img src="{{url_for('static', filename='assets/img/tim')}}" class="scaled" alt="Tim Besaw"/>
+                            </a>
+                            <figcaption>
+                              <h3 class="name">Tim Besaw</h3>
+                              <section class="data-card">
+                                  <span class="email">
+                                      <a href="mailto:">
+                                        <img src="{{url_for('static', filename='assets/img/email-icon.png')}}" class="email-icon" alt="Email Icon" title="Send me and email"/>
+                                      </a>
+                                  </span>
+                                  <span class="linkedin icons">                                      
+                                    <a href="https://www.linkedin.com/in/tim/">
+                                      <img src="{{url_for('static', filename='assets/img/linkedin_logo.png')}}" class="linked-logo" alt="LinkedIn Logo" title="Connect on LinkedIn"/>
+                                    </a>
+                                  </span>
+                                  <span class="github icons">                                      
+                                    <a href="https://github.com/tim">
+                                      <img src="{{url_for('static', filename='assets/img/github_logo.png')}}"  class="git-logo" alt="GitHub Logo" title="Connect on GitHub"/>
+                                    </a>
+                                  </span>
+                                </section>
+                            </figcaption>
+                          </figure>                            
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 col-lg-2">
+                    <div id="team-member">                        
+                      <div>
+                          <figure class="profile">
+                            <a href="https://linkedin.com/in/bayrex-rodriguez">
+                              <img src="{{url_for('static', filename='assets/img/bay.jpg')}}" class="scaled" alt="Bayrex Rodriguez"/>
+                            </a>
+                            <figcaption>
+                              <h3 class="name">Bayrex Rodriguez</h3>
+                              <section class="data-card">
+                                  <span class="email">
+                                    <a href="mailto:brodriguez@synctecllc.com">
+                                      <img src="{{url_for('static', filename='assets/img/email-icon.png')}}" class="email-icon" alt="Email Icon" title="Send me and email"/>
+                                    </a>
+                                  </span>
+                                  <span class="linkedin icons">                                      
+                                    <a href="https://linkedin.com/in/bayrex-rodriguez">
+                                      <img src="{{url_for('static', filename='assets/img/linkedin_logo.png')}}" class="linked-logo" alt="LinkedIn Logo" title="Connect on LinkedIn"/>
+                                    </a>
+                                  </span>
+                                  <span class="github icons">                                      
+                                    <a href="https://github.com/BayrexR">
+                                      <img src="{{url_for('static', filename='assets/img/github_logo.png')}}"  class="git-logo" alt="GitHub Logo" title="Connect on GitHub"/>
+                                    </a>
+                                  </span>
+                                </section>
+                            </figcaption>
+                          </figure>                            
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 col-lg-2">
+                    <div id="team-member">                        
+                      <div>
+                          <figure class="profile">
+                            <a href="">
+                              <img src="{{url_for('static', filename='assets/img/chris.jpg')}}" class="scaled" alt="Chris Tran"/>
+                            </a>
+                            <figcaption>
+                              <h3 class="name">Chris Tran</h3>
+                              <section class="data-card">
+                                  <span class="email">
+                                      <a href="mailto:">
+                                        <img src="{{url_for('static', filename='assets/img/email-icon.png')}}" class="email-icon" alt="Email Icon" title="Send me and email"/>
+                                      </a>
+                                  </span>
+                                  <span class="linkedin icons">                                      
+                                    <a href="https://www.linkedin.com/in/c_tran301/">
+                                      <img src="{{url_for('static', filename='assets/img/linkedin_logo.png')}}" class="linked-logo" alt="LinkedIn Logo" title="Connect on LinkedIn"/>
+                                    </a>
+                                  </span>
+                                  <span class="github icons">                                      
+                                    <a href="https://www.github.com/c_tran301/">
+                                      <img src="{{url_for('static', filename='assets/img/github_logo.png')}}"  class="git-logo" alt="GitHub Logo" title="Connect on GitHub"/>
+                                    </a>
+                                  </span>
+                                </section>
+                            </figcaption>
+                          </figure>                            
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 col-lg-2">
+                    <div id="team-member">                        
+                      <div>
+                          <figure class="profile">
+                            <a href="https://www.linkedin.com/in/emil-rodulfo/">
+                              <img src="{{url_for('static', filename='assets/img/emil')}}" class="scaled" alt="Emil Rodulfo"/>
+                            </a>
+                            <figcaption>
+                              <h3 class="name">Emil Rodulfo</h3>
+                              <section class="data-card">
+                                  <span class="email">
+                                      <a href="mailto:">
+                                        <img src="{{url_for('static', filename='assets/img/email-icon.png')}}" class="email-icon" alt="Email Icon" title="Send me and email"/>
+                                      </a>
+                                  </span>
+                                  <span class="linkedin icons">                                      
+                                    <a href="https://www.linkedin.com/in/emil-rodulfo/">
+                                      <img src="{{url_for('static', filename='assets/img/linkedin_logo.png')}}" class="linked-logo" alt="LinkedIn Logo" title="Connect on LinkedIn"/>
+                                    </a>
+                                  </span>
+                                  <span class="github icons">                                      
+                                    <a href="https://github.com/emilrodulfo">
+                                      <img src="{{url_for('static', filename='assets/img/github_logo.png')}}"  class="git-logo" alt="GitHub Logo" title="Connect on GitHub"/>
+                                    </a>
+                                  </span>
+                                </section>
+                            </figcaption>
+                          </figure>                            
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-4 col-lg-2">
+                    <div id="team-member">                        
+                      <div>
+                          <figure class="profile">
+                            <a href="https://www.linkedin.com/in/martina-abomosa-1259b5167/">
+                              <img src="{{url_for('static', filename='assets/img/martina2.jpg')}}" class="scaled" alt="Martina Abomosa"/>
+                            </a>
+                            <figcaption>
+                              <h3 class="name">Martina Abomosa</h3>
+                              <section class="data-card">
+                                  <span class="email">
+                                      <a href="mailto:">
+                                        <img src="{{url_for('static', filename='assets/img/email-icon.png')}}" class="email-icon" alt="Email Icon" title="Send me and email"/>
+                                      </a>
+                                  </span>
+                                  <span class="linkedin icons">                                      
+                                    <a href="https://www.linkedin.com/in/martina-abomosa-1259b5167/">
+                                      <img src="{{url_for('static', filename='assets/img/linkedin_logo.png')}}" class="linked-logo" alt="LinkedIn Logo" title="Connect on LinkedIn"/>
+                                    </a>
+                                  </span>
+                                  <span class="github icons">                                      
+                                    <a href="https://github.com/martinamagdy">
+                                      <img src="{{url_for('static', filename='assets/img/github_logo.png')}}"  class="git-logo" alt="GitHub Logo" title="Connect on GitHub"/>
+                                    </a>
+                                  </span>
+                                </section>
+                            </figcaption>
+                          </figure>                            
+                      </div>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                
+              </div>
+              
             </div><!--Begin Main Row-->
             <h1></h1>
 
