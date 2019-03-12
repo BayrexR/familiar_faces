@@ -113,23 +113,26 @@
   <div class="text-center">
     <div id="gender-id" style="height: 600px;"></div>  
     <br />
-    <div class="a"> The outcomes of the emotion models confirms our hypothesis that larger sample count variables in the training set result in higher accuracy. Based on the graph above showing all 30 emotion <br />
-      models grouped by sample count, we can clearly see the bars increasing together in each progression. Below we break down the statistical ranges and aggregate percentages by sample count:
+    <div class="a"> As opposed to the emotion models, we cannot confidently confirm that sample count as a variable plays a definitive factor in determining gender based on our graph above. At the aggregate level, we can <br />
+      clearly see that the bars for each model do not provide a positive slope for change in accuracy as sample counts increased. Similar to the emotion models, we will do a statistical table view of the aggregated data:
     </div> 
     <br />
     <img src="{{url_for('static', filename='assets/img/gen-samp.PNG')}}" id="gen_samp" alt="Gender Model by Sample Count">
     <br />
     <br />
-    <div class="a"> Further supporting our findings above, we observe from this table that both range and aggregate percentages of accuracy increase in a linear fashion. There is a model in sample group 70 which <br />
-      accurately detected emotion at a striking 91.4%.  Despite this high accuracy, it is worth noting that the aggregate average between the 35 and 70 sample groups is only marginally different by 6.5%.  In fact, <br />
-      all but one model in sample group 35 outperformed half of the models in sample group 70. This may be due to the angles used in the model which we will analyze below.
+    <div class="a"> It's quite surprising that at the aggregated sample count level, the accuracy outcomes are essentially equal. The difference from the highest performing sample group to the poorest performing group is only 4%. <br />
+      While it may be easy to consider that the algorithm needs to be reworked, we do observe that even at the smallest sample group of 2, the models were able to accurately detect gender at a notable 64.2%.  We will drilldown <br />
+      further at the model level to confirm whether angles used and the test case gender had any bearings on each models outcome.
     </div> 
     <br />
     <img src="{{url_for('static', filename='assets/img/gen-mod.PNG')}}" id="gen_mod" alt="Gender Outcomes by Model">
     <br />
     <br />
-    <div class="a"> The angles used to train the models conclusively prove that straight angle models(AS, FS, MS) performed much more accurately in detecting emotion as compared to their multiple angle<br />
-      counterparts(AM, FM, MM). On the other hand, we cannot confidently establish that gender as a variable plays a consistent factor in determining emotion accurately based on the accuracy results above.
+    <div class="a"> The model level outcomes is quite astonishing especially for the models in sample groups 2 and 5. Regardless of the angles used in the training data set, it's surprising to see how accurately it detected the female <br />
+      gender and how defective it was for the male test cases.  It's interesting that the models detect female test cases on lower sample groups better whereas the male test cases were determined at a higher accuracy on larger<br /> 
+      sample groups. This table shows the value of a drilldown and the precautions we must take upon first glance of aggregated data. On a lighter note, we also found that the Beyonce/Bradley Cooper(BC10) model performed with <br /> 
+      highest accuracy and overall balance among all gender models between detecting for both genders. It had an aggregate accuracy of 71.4% and was accurate for at least 65% for both genders. This model was generated using a <br /> 
+      sample count of 10. It would be interesting in future tests, to see if using higher sample counts on single participants would yield better accuracy as it did in this case.
     </div> 
     <br />
   </div>
