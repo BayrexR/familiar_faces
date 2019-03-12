@@ -10,7 +10,7 @@ sys.path.append("static/assets/Resources/")
 import config as c
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func, MetaData
+from sqlalchemy import create_engine, func, MetaData, text
 from sqlalchemy.pool import StaticPool
 from flask import Flask, jsonify, render_template, request, redirect
 
@@ -155,12 +155,23 @@ def test_cases():
         rsMale      = con.execute("Select model_name, prctCorrect from gen_grouped_results_vw where file_gender = 'male'")
         rsFemale    = con.execute("Select model_name, prctCorrect from gen_grouped_results_vw where file_gender = 'female'")
 
-        rsModelAM = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'AM%'")
-        rsModelAS = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'AS%'")
-        rsModelFM = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'FM%'")
-        rsModelFS = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'FS%'")
-        rsModelMM = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'MM%'")
-        rsModelMS = con.execute("SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'MS%'")
+        a_m = text("""SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'AM%'""")
+        rsModelAM = con.execute(a_m)
+
+        a_s = text("""SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'AS%'""")
+        rsModelAS = con.execute(a_s)
+        
+        f_m = text("""SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'FM%'""")
+        rsModelFM = con.execute(f_m)
+        
+        f_s = text("""SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'FS%'""")
+        rsModelFS = con.execute(f_s)
+        
+        m_m = text("""SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'MM%'""")
+        rsModelMM = con.execute(m_m)
+        
+        m_s = text("""SELECT model_name, prctCorrect FROM emo_grouped_results_vw WHERE model_name LIKE 'MS%'""")
+        rsModelMS = con.execute(m_s)
         
     return (
         render_template("test_cases.html", rsAfraid=rsAfraid, rsAngry=rsAngry, rsDisgusted=rsDisgusted, rsHappy=rsHappy, rsNeutral=rsNeutral, rsSad=rsSad, rsSurprised=rsSurprised, rsMale=rsMale, rsFemale=rsFemale, rsModelAM=rsModelAM, rsModelAS= rsModelAS, rsModelFM= rsModelFM, rsModelFS= rsModelFS, rsModelMM= rsModelMM, rsModelMS=rsModelMS)
