@@ -75,7 +75,7 @@ function createEmotionPlot() {
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        }    
+        },    
     };
 
     // Render the plot to the div tag with id "plot"
@@ -129,7 +129,7 @@ function createAM_Plot() {
             y: mp_AM,
             text: mpModelAM,
             name: "AM",
-            type: "line"
+            type: "bar"
         };
         
         
@@ -138,14 +138,16 @@ function createAM_Plot() {
     
         // Create custom layout
         var layout = {
-            xaxis: {title: 'Test Model'},
+            xaxis: {title: 'Test Sample Size'},
             yaxis: {title: 'Percentage Correct'},
+            range: [0, 100],
             margin: {
                 t: 20, //top margin
                 l: 50, //left margin
                 r: 50, //right margin
                 b: 140 //bottom margin
-            }    
+            },
+            
         };
     
         // Render the plot to the div tag with id "plot"
@@ -159,7 +161,7 @@ function createAS_Plot() {
         y: mp_AS,
         text: mpModelAS,
         name: "AS",
-        type: "line"
+        type: "bar"
     };
     
     
@@ -168,14 +170,15 @@ function createAS_Plot() {
 
     // Create custom layout
     var layout = {
-        xaxis: {title: 'Test Model'},
+        xaxis: {title: 'Test Sample Size'},
         yaxis: {title: 'Percentage Correct'},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        }    
+        },
+        range: [0, 100]    
     };
 
     // Render the plot to the div tag with id "plot"
@@ -189,7 +192,7 @@ function createFM_Plot() {
         y: mp_FM,
         text: mpModelFM,
         name: "FM",
-        type: "line"
+        type: "bar"
     };
     
     
@@ -198,14 +201,15 @@ function createFM_Plot() {
 
     // Create custom layout
     var layout = {
-        xaxis: {title: 'Test Model'},
+        xaxis: {title: 'Test Sample Size'},
         yaxis: {title: 'Percentage Correct'},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        }    
+        },
+        range: [0, 100]    
     };
 
     // Render the plot to the div tag with id "plot"
@@ -219,7 +223,7 @@ function createFS_Plot() {
         y: mp_FS,
         text: mpModelFS,
         name: "FS",
-        type: "line"
+        type: "bar"
     };
     
     
@@ -228,14 +232,15 @@ function createFS_Plot() {
 
     // Create custom layout
     var layout = {
-        xaxis: {title: 'Test Model'},
+        xaxis: {title: 'Test Sample Size'},
         yaxis: {title: 'Percentage Correct'},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        }    
+        },
+        range: [0, 100]        
     };
 
     // Render the plot to the div tag with id "plot"
@@ -249,7 +254,7 @@ function createMM_Plot() {
         y: mp_MM,
         text: mpModelMM,
         name: "MM",
-        type: "line"
+        type: "bar"
     };
     
     
@@ -258,18 +263,19 @@ function createMM_Plot() {
 
     // Create custom layout
     var layout = {
-        xaxis: {title: 'Test Model'},
+        xaxis: {title: 'Test Sample Size'},
         yaxis: {title: 'Percentage Correct'},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        }    
+        },
+        range: [0, 100]        
     };
 
     // Render the plot to the div tag with id "plot"
-    Plotly.newPlot("model6-data-plot", data, layout);
+    Plotly.newPlot("model5-data-plot", data, layout);
 };   
 
 
@@ -280,7 +286,7 @@ function createMS_Plot() {
         y: mp_MS,
         text: mpModelMS,
         name: "MS",
-        type: "line"
+        type: "bar"
     };
     
     
@@ -289,18 +295,20 @@ function createMS_Plot() {
 
     // Create custom layout
     var layout = {
-        xaxis: {title: 'Test Model'},
-        yaxis: {title: 'Percentage Correct'},
+        xaxis: {title: 'Test Sample Size'},
+        yaxis: {title: 'Percentage Correct', 
+                range: [0, 105]},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        }    
+        },
+               
     };
 
     // Render the plot to the div tag with id "plot"
-    Plotly.newPlot("model2-data-plot", data, layout);
+    Plotly.newPlot("model6-data-plot", data, layout);
 };   
 
 
