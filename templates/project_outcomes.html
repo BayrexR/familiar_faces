@@ -78,17 +78,60 @@
                   </nav>
             </div> <!--End Navbar row-->
 <!----------------------------------------------BEGIN PAGE CONTENT------------------------------------------------------->
-<h1 align="center">PROJECT OUTCOME</h1>
+<h1 align="center" font-size=large><strong>PROJECT OUTCOME</strong></h1>
+<br />
+<br />
+<div class="text-center" style="font-size:180%"><strong>Emotion Model Outcomes</strong></div>    
 <div class="col-xs-12">
   <div class="text-center">
-    <div id="emotion-id" style="height: 600px;"></div>   
-    <div class="text-center">Emotion Model Conclusion</div>    
+    <div id="emotion-id" style="height: 600px;"></div>  
+    <br />
+    <div class="a"> The outcomes of the emotion models confirms our hypothesis that larger sample count variables in the training set result in higher accuracy. Based on the graph above showing all 30 emotion <br />
+      models grouped by sample count, we can clearly see the bars increasing together in each progression. Below we break down the statistical ranges and aggregate percentages by sample count:
+    </div> 
+    <br />
+    <img src="{{url_for('static', filename='assets/img/emo-samp.PNG')}}" id="emo_samp" alt="Emotions Model by Sample Count">
+    <br />
+    <br />
+    <div class="a"> Further supporting our findings above, we observe from this table that both range and aggregate percentages of accuracy increase in a linear fashion. There is a model in sample group 70 which <br />
+      accurately detected emotion at a striking 91.4%.  Despite this high accuracy, it is worth noting that the aggregate average between the 35 and 70 sample groups is only marginally different by 6.5%.  In fact, <br />
+      all but one model in sample group 35 outperformed half of the models in sample group 70. This may be due to the angles used in the model which we will analyze below.
+    </div> 
+    <br />
+    <img src="{{url_for('static', filename='assets/img/emo-mod.PNG')}}" id="emo_mod" alt="Emotions Outcomes by Model">
+    <br />
+    <br />
+    <div class="a"> The angles used to train the models conclusively prove that straight angle models(AS, FS, MS) performed much more accurately in detecting emotion as compared to their multiple angle<br />
+      counterparts(AM, FM, MM). On the other hand, we cannot confidently establish that gender as a variable plays a consistent factor in determining emotion accurately based on the accuracy results above.
+    </div> 
+    <br />
   </div>
 </div>
+
+<div class="text-center" style="font-size:180%"><strong>Gender Model Outcomes</strong></div>    
 <div class="col-xs-12">
   <div class="text-center">
-    <div id="gender-id" style="height: 600px;"></div>    
-    <div class="text-center">Gender Model Conclusion</div>    
+    <div id="gender-id" style="height: 600px;"></div>  
+    <br />
+    <div class="a"> The outcomes of the emotion models confirms our hypothesis that larger sample count variables in the training set result in higher accuracy. Based on the graph above showing all 30 emotion <br />
+      models grouped by sample count, we can clearly see the bars increasing together in each progression. Below we break down the statistical ranges and aggregate percentages by sample count:
+    </div> 
+    <br />
+    <img src="{{url_for('static', filename='assets/img/gen-samp.PNG')}}" id="gen_samp" alt="Gender Model by Sample Count">
+    <br />
+    <br />
+    <div class="a"> Further supporting our findings above, we observe from this table that both range and aggregate percentages of accuracy increase in a linear fashion. There is a model in sample group 70 which <br />
+      accurately detected emotion at a striking 91.4%.  Despite this high accuracy, it is worth noting that the aggregate average between the 35 and 70 sample groups is only marginally different by 6.5%.  In fact, <br />
+      all but one model in sample group 35 outperformed half of the models in sample group 70. This may be due to the angles used in the model which we will analyze below.
+    </div> 
+    <br />
+    <img src="{{url_for('static', filename='assets/img/gen-mod.PNG')}}" id="gen_mod" alt="Gender Outcomes by Model">
+    <br />
+    <br />
+    <div class="a"> The angles used to train the models conclusively prove that straight angle models(AS, FS, MS) performed much more accurately in detecting emotion as compared to their multiple angle<br />
+      counterparts(AM, FM, MM). On the other hand, we cannot confidently establish that gender as a variable plays a consistent factor in determining emotion accurately based on the accuracy results above.
+    </div> 
+    <br />
   </div>
 </div>
 
@@ -115,6 +158,9 @@
     case 'S10':
     case 'S35':
     case 'S70':
+    case 'BC10':
+    case 'PR10':
+    case 'TC10':
       genderModelName.push('{{rowOutcome[0]}}');
       genderPctCorrect.push('{{rowOutcome[1]}}');
     break;

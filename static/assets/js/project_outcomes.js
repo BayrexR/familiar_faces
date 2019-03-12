@@ -49,12 +49,14 @@ function getGenderGroups(name, pct){
     var gender10 = [];
     var gender35 = [];
     var gender70 = [];
+    var genderCeleb = [];
 
     var genderPct2 = [];
     var genderPct5 = [];
     var genderPct10 = [];
     var genderPct35 = [];
     var genderPct70 = [];
+    var genderPctCeleb = [];
 
     for (i = 0; i < name.length; i++){
         var size = name[i].substring(1);
@@ -72,12 +74,15 @@ function getGenderGroups(name, pct){
             case '35' : gender35.push(name[i]);
                 genderPct35.push(pct[i]);
             break;
-            default : gender70.push(name[i]);
-                genderPct70.push(pct[i]);
+            case '70' : gender70.push(name[i]);
+            genderPct70.push(pct[i]);
+            break;
+            default : genderCeleb.push(name[i]);
+                genderPctCeleb.push(pct[i]);
         };
     };
-    console.log(gender2, gender5, gender10, gender35, gender70);
-    return[gender2, genderPct2, gender5, genderPct5, gender10, genderPct10, gender35, genderPct35, gender70, genderPct70];
+    console.log(gender2, gender5, gender10, gender35, gender70, genderCeleb);
+    return[gender2, genderPct2, gender5, genderPct5, gender10, genderPct10, gender35, genderPct35, gender70, genderPct70, genderCeleb, genderPctCeleb];
 
 };
 
@@ -128,7 +133,6 @@ var data = [EM2, EM5, EM10, EM35, EM70];
 
     // Create custom layout
     var layout = {
-      title: "Emotion Model Outcomes",
       yaxis: {title: '% Correct'},
       xaxis: {title: 'Model'},
       showlegend:true,
@@ -188,12 +192,17 @@ function createGenderPlot(genderModelName, genderPctCorrect) {
         type: "bar"
     };
     
-  
-  var data = [G2, G5, G10, G35, G70];
+    var GC = {
+        x: traceNames[10],
+        y: traceNames[11],
+        name: "Celebrity - Sample Count 10",
+        type: "bar"
+    };
+
+  var data = [G2, G5, G10, G35, G70, GC];
   
       // Create custom layout
       var layout = {
-        title: "Gender Model Outcomes",
         yaxis: {title: '% Correct'},
         xaxis: {title: 'Model'},
         showlegend:true,
