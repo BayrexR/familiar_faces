@@ -142,7 +142,7 @@ def documentation():
 #======================
 #Route to Test Cases Page
 #======================
-@app.route("/test_cases/")
+@app.route("/testcases")
 def test_cases():
     with engine.connect() as con:    
         rsAfraid    = con.execute("Select model_name, prctCorrect from emo_grouped_results_vw where file_emotion = 'afraid'")
