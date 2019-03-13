@@ -96,14 +96,47 @@
                   </uL>
                 </div>
 
+                <div id="mothodology">
+                  <h1><strong>Emotion Recognition and Gender Examples</strong></h1>
+                  <ul>
+                    <il><h2><strong>Emotion Recognition</strong></h2>
+                      <br>
+                      <img src="{{url_for('static', filename='assets/img/emotion.JPG')}}" id="models_table" alt="emotion">
+                    </il>
+                    <br>
+                    <il><h2><strong>Gender Recognition</strong></h2>
+                      <br>
+                      <img src="{{url_for('static', filename='assets/img/gender.JPG')}}" id="models_table" alt="gender">
+                    </il>
+                    <br>
+                    <il><h2><strong>Team Detection</strong></h2>
+                      <br>
+                      <img src="{{url_for('static', filename='assets/img/team_detection.JPG')}}" id="models_table" alt="team detection">
+                    </il>
+                    <il><h2><strong>Test Samples For Gender</strong></h2>
+                      <br>
+                      <img src="{{url_for('static', filename='assets/img/multiple_gender_70.JPG')}}" id="models_table" alt="test samples">
+                    </il>
+                  </ul>
+                </div>
+
                 <div id="ml_alg">
                   <h1><strong>Ml Algorithm Description</strong></h1>
                   <h3><strong>Data Preprocessing</strong></h3>
                   <ul>
                     <li>Collecting photos from KDEF dataset </li>
                     <li>Splitting photos as different emotion, gender and face angle</li>
-                    <li>Prepare the imaged to be trained by run python3 emotion_data_prep.py for emotion and python3 gender_data_prep.py for gender</li>
-                    <li>Training 40 custom model (30 for emotion and 13 for gender)</li>
+                    <li>Prepare the imaged to be trained by run 
+                      <br>
+                      python3 emotion_data_prep.py
+                      <br>
+                      python3 train_emotion_classifier.py for emotion
+                      <br>
+                      python3 gender_data_prep.py 
+                      <br>
+                      python3 train_gender_classifier.py for gender 
+                      <br>
+                      which will detect faces by using fisherfacerecognizer from OpenCV library, convert images to grayscale and resize the image then do the train by Splitting the images into test and prediction sets and create the model</li>
                     <li>Testing each model and store the result into database </li>
                     <li>Using the database to visualize the result vs the reality to get a clear understanding of each model accuracy</li>
                   </ul>
@@ -116,7 +149,7 @@
                     The material was originally developed to be used for psychological and medical research purposes. More specifically material was made to be particularly suitable for perception, attention, emotion, memory and backward masking experiments. Hence, particular attention was for instance paid to create a soft, even light, shooting expressions in multiple angles, use of uniform T-shirt colors, and use of a grid to center participants face during shooting, and positioning of eyes and mouths in fixed image coordinates during scanning.
                     <br>
                     <br>
-                    The set contains 70 individuals, each displaying 7 different emotional expressions, each expression being photographed (twice) from 5 different angles. For more info <a href="http://www.emotionlab.se/kdef/">http://www.emotionlab.se/kdef/</a>.
+                    The set contains 70 individuals, each displaying 7 different emotional expressions, each expression being photographed (twice) from 5 different angles. For more info .
                     <br>
                   </section>
                   <h3><strong>Models</strong></h3>
@@ -133,15 +166,15 @@
                       using this hierarchy to put each emotion photo on the correct folder
                       <br>
                       <pre>
-                          ├── data
-                          ├── raw_emotion
-                              ├── afraid
-                              ├── angry
-                              ├── disgusted
-                              ├── happy
-                              ├── neutral
-                              ├── sad
-                              ├── surprised
+                      ├── data
+                                ├── raw_emotion
+                                     ├── afraid
+                                    ├── angry
+                                        ├── disgusted
+                                    ├── happy
+                                      ├── neutral
+                                  ├── sad
+                                        ├── surprised
                       </pre>
                       Then run 
                       <br>
@@ -159,10 +192,10 @@
                       <br>
                       putting each gender on its specific folder 
                       <pre>
-                          ├── data
-                          ├── raw_gender
-                              ├── male
-                              ├── female                      
+              ├── data
+                              ├── raw_gender
+                                  ├── male
+                                                          ├── female                      
                       </pre>
                       Then run
                       <br>
@@ -179,6 +212,9 @@
                   <ul>
                     <li>
                       <a href="https://www.bogotobogo.com/python/OpenCV_Python/python_opencv3_Image_Object_Detection_Face_Detection_Haar_Cascade_Classifiers.php">Object Detection : Face Detection Using HAAR Cascade Classifiers</a>
+                    </li>
+                    <li>
+                        <a href="http://www.emotionlab.se/kdef/">KDEF Dataset : http://www.emotionlab.se/kdef/</a>
                     </li>
                   </ul>
                 </div>
