@@ -1,3 +1,90 @@
+//Global Variables
+//-----------------
+var modelAvgs = [];
+
+//-----------------
+//Helper Functions
+//-----------------
+
+//Average scores of an array
+function avgScores(arr){
+    var avg = 0;
+    var tot = 0;
+    for (var i=0; i<arr.length;i++){
+        tot = tot += arr[i];
+    };
+    avg = tot / arr.length;
+    var v = avg.toFixed();
+    v = parseInt(v);
+    console.log(v);
+    modelAvgs.push(v);
+    console.log(modelAvgs);
+
+    return(modelAvgs);
+};
+
+
+//Split values into arrays for averaging
+function getAvg(values, name){
+    modelAvgs=[];
+    var avg2 = [];
+    var avg5 = [];
+    var avg10 = [];
+    var avg35 = [];
+    var avg70 = [];  
+    var avg =[];
+
+
+    //Switch statement to isolate model sample size and push to appropriate array
+    for (i = 0; i < name.length; i++){
+        var size = name[i].substring(2);
+        var val= 0;
+        // console.log(size);
+        switch (size) {
+            case '2': val = parseFloat(values[i]);
+                avg2.push(val);
+            break;
+            case '5' : val = parseInt(values[i]);
+                avg5.push(val);
+            break;
+            case '10' : val = parseFloat(values[i]);
+                avg10.push(val);
+            break;
+            case '35' : val = parseFloat(values[i]);
+                avg35.push(val);
+            break;
+            default : val = parseFloat(values[i]);
+                avg70.push(val);
+        };
+        console.log(avg2, avg5,avg10,avg35,avg70);
+    };
+
+    avgScores(avg2);
+    avgScores(avg5);
+    avgScores(avg10);
+    avgScores(avg35);
+    avgScores(avg70);
+
+    //Async function to call avgScores function on each array in exact model size ascending order.
+    // async function pushValues(){
+    //     await avgScores(avg2);
+    //     await avgScores(avg5);
+    //     await avgScores(avg10);
+    //     await avgScores(avg35);
+    //     await avgScores(avg70);
+    //     return Promise.resolve(modelAvgs);
+    // };       
+    // average = pushValues(); 
+    // console.log(average);   
+
+    return (modelAvgs);
+}
+
+//----------------
+//End Helper Functions
+//----------------
+
+
 function createEmotionPlot() {
 
     // Trace1 Afraid
@@ -123,43 +210,49 @@ function createGenderPlot() {
 };    
 
 function createAM_Plot() {
-        // Trace1 AM
-        var trace1 = {
-            x: mpModelAM,
-            y: mp_AM,
-            text: mpModelAM,
-            name: "AM",
-            type: "bar"
-        };
-        
-        
-        // Combining both traces
-        var data = [trace1];
+    getAvg(mp_AM, mpModelAM);
+    var avgAM= modelAvgs;
+    var names = ["AM2","AM5","AM10","AM35","AM70"];
+    // Trace1 AM
+    var trace1 = {
+        x: names,
+        y: avgAM,
+        text: names,
+        name: "AM",
+        type: "bar"
+    };
     
-        // Create custom layout
-        var layout = {
-            xaxis: {title: 'Test Sample Size'},
-            yaxis: {title: 'Percentage Correct'},
-            range: [0, 100],
-            margin: {
-                t: 20, //top margin
-                l: 50, //left margin
-                r: 50, //right margin
-                b: 140 //bottom margin
-            },
-            
-        };
     
-        // Render the plot to the div tag with id "plot"
-        Plotly.newPlot("model1-data-plot", data, layout);
+    // Combining both traces
+    var data = [trace1];
+
+    // Create custom layout
+    var layout = {
+        xaxis: {title: 'Test Sample Size'},
+        yaxis: {title: 'Percentage Correct',
+            range: [0, 105]},
+        margin: {
+            t: 20, //top margin
+            l: 50, //left margin
+            r: 50, //right margin
+            b: 140 //bottom margin
+        },
+        
+    };
+
+    // Render the plot to the div tag with id "plot"
+    Plotly.newPlot("model1-data-plot", data, layout);
 };    
 
 function createAS_Plot() {
+    getAvg(mp_AS, mpModelAS);
+    var avgAS= modelAvgs;
+    var names = ["AS2","AS5","AS10","AS35","AS70"];
     // Trace1 AS
     var trace1 = {
-        x: mpModelAS,
-        y: mp_AS,
-        text: mpModelAS,
+        x: names,
+        y: avgAS,
+        text: names,
         name: "AS",
         type: "bar"
     };
@@ -171,14 +264,14 @@ function createAS_Plot() {
     // Create custom layout
     var layout = {
         xaxis: {title: 'Test Sample Size'},
-        yaxis: {title: 'Percentage Correct'},
+        yaxis: {title: 'Percentage Correct',
+            range: [0, 105]},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        },
-        range: [0, 100]    
+        }    
     };
 
     // Render the plot to the div tag with id "plot"
@@ -186,11 +279,14 @@ function createAS_Plot() {
 };    
 
 function createFM_Plot() {
+    getAvg(mp_FM, mpModelFM);
+    var avgFM= modelAvgs;
+    var names = ["FM2","FM5","FM10","FM35","FM70"];
     // Trace1 AS
     var trace1 = {
-        x: mpModelFM,
-        y: mp_FM,
-        text: mpModelFM,
+        x: names,
+        y: avgFM,
+        text: names,
         name: "FM",
         type: "bar"
     };
@@ -202,14 +298,14 @@ function createFM_Plot() {
     // Create custom layout
     var layout = {
         xaxis: {title: 'Test Sample Size'},
-        yaxis: {title: 'Percentage Correct'},
+        yaxis: {title: 'Percentage Correct',
+            range: [0, 105]},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        },
-        range: [0, 100]    
+        }    
     };
 
     // Render the plot to the div tag with id "plot"
@@ -217,11 +313,14 @@ function createFM_Plot() {
 };   
 
 function createFS_Plot() {
+    getAvg(mp_FS, mpModelFS);
+    var avgFS= modelAvgs;
+    var names = ["FS2","FS5","FS10","FS35","FS70"];
     // Trace1 FS
     var trace1 = {
-        x: mpModelFS,
-        y: mp_FS,
-        text: mpModelFS,
+        x: names,
+        y: avgFS,
+        text: names,
         name: "FS",
         type: "bar"
     };
@@ -233,14 +332,14 @@ function createFS_Plot() {
     // Create custom layout
     var layout = {
         xaxis: {title: 'Test Sample Size'},
-        yaxis: {title: 'Percentage Correct'},
+        yaxis: {title: 'Percentage Correct',
+            range: [0, 105]},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        },
-        range: [0, 100]        
+        }        
     };
 
     // Render the plot to the div tag with id "plot"
@@ -248,11 +347,14 @@ function createFS_Plot() {
 };   
 
 function createMM_Plot() {
+    getAvg(mp_MM, mpModelMM);
+    var avgMM= modelAvgs;
+    var names = ["MM2","MM5","MM10","MM35","MM70"];
     // Trace1 AS
     var trace1 = {
-        x: mpModelMM,
-        y: mp_MM,
-        text: mpModelMM,
+        x: names,
+        y: avgMM,
+        text: names,
         name: "MM",
         type: "bar"
     };
@@ -264,14 +366,14 @@ function createMM_Plot() {
     // Create custom layout
     var layout = {
         xaxis: {title: 'Test Sample Size'},
-        yaxis: {title: 'Percentage Correct'},
+        yaxis: {title: 'Percentage Correct',
+            range: [0, 105]},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        },
-        range: [0, 100]        
+        }       
     };
 
     // Render the plot to the div tag with id "plot"
@@ -280,11 +382,18 @@ function createMM_Plot() {
 
 
 function createMS_Plot() {
+    // console.log("Standard Values: "+mp_MS +" "+mpModelMS );
+    //Call getAvg() to get average values
+    getAvg(mp_MS, mpModelMS);
+    var avgMS= modelAvgs;
+    var names = ["MS2","MS5","MS10","MS35","MS70"];
+    // console.log(avgMS);
+
     // Trace1 MS
     var trace1 = {
-        x: mpModelMS,
-        y: mp_MS,
-        text: mpModelMS,
+        x: names,
+        y: avgMS,
+        text: names,
         name: "MS",
         type: "bar"
     };
@@ -296,14 +405,14 @@ function createMS_Plot() {
     // Create custom layout
     var layout = {
         xaxis: {title: 'Test Sample Size'},
-        yaxis: {title: 'Percentage Correct', 
+        yaxis: {title: 'Percentage Correct',
                 range: [0, 105]},
         margin: {
             t: 20, //top margin
             l: 50, //left margin
             r: 50, //right margin
             b: 140 //bottom margin
-        },
+        }
                
     };
 
