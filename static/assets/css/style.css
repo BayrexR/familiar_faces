@@ -192,3 +192,12 @@ li{
 #GitHub-logo {
     margin-left:20px;
 }
+
+.sample-img{
+  width:100%;  
+}
+
+.sample-couple{
+  width:100%;
+  max-width:600px;
+}
